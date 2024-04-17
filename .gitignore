@@ -21,7 +21,8 @@ log-*/
 # intellij files
 /.idea/
 /solana.iml
-/.vscode/
+# qtrade
+# /.vscode/
 
 # fetch-spl.sh artifacts
 /spl-genesis-args.sh
