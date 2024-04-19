@@ -1,3 +1,8 @@
+// qtrade: allow invalid reference casting
+//         For unsafe call at line 528
+//         Reference: https://github.com/rust-lang/rust/issues/116410
+#![allow(invalid_reference_casting)]
+
 use {
     super::*,
     crate::declare_syscall,

@@ -10,7 +10,13 @@ fn main() -> Result<(), std::io::Error> {
     let mut protos = Vec::new();
     for proto_file in &proto_files {
         let proto = proto_base_path.join(proto_file);
-        println!("cargo::rerun-if-changed={}", proto.display());
+        // qtrade
+        // error: unsupported output in build script of `solana-storage-proto v1.14.6 (/workspaces/qtrade/solana/execution/storage-proto)`: `cargo::rerun-if-changed=proto/confirmed_block.proto`
+        // Found a `cargo::key=value` build directive which is reserved for future use.
+        // Either change the directive to `cargo:key=value` syntax (note the single `:`) or upgrade your version of Rust.
+        // See https://doc.rust-lang.org/cargo/reference/build-scripts.html#outputs-of-the-build-script for more information about build script outputs.
+        // println!("cargo::rerun-if-changed={}", proto.display());
+        println!("cargo:rerun-if-changed={}", proto.display());
         protos.push(proto);
     }
 

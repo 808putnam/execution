@@ -183,6 +183,9 @@ impl<'a> AccountInfo<'a> {
 
     pub fn assign(&self, new_owner: &Pubkey) {
         // Set the non-mut owner field
+        // qtrade: allow invalid reference casting
+        //         Reference: https://github.com/rust-lang/rust/issues/116410
+        #![allow(invalid_reference_casting)]
         unsafe {
             std::ptr::write_volatile(
                 self.owner as *const Pubkey as *mut [u8; 32],
